@@ -29,7 +29,7 @@ import com.sun.j2ee.blueprints.waf.controller.web.html.HTMLActionException;
  * to access the database.
  */
 public final class TO_BE_RENAMED implements HTMLAction {
-// public final class CatalogHTMLAction implements HTMLAction {
+//public final class CatalogHTMLAction implements HTMLAction {
 
     public static final String ACCOUNT_READ_ACTION = "readAccount";
     public static final String ACCOUNT_CREATE_ACTION = "createAccount";
