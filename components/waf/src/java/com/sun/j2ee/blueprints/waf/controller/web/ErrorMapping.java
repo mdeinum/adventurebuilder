@@ -1,6 +1,9 @@
 package com.sun.j2ee.blueprints.waf.controller.web;
 
-public class ErrorMapping implements java.io.Serializable {
+import com.sun.j2ee.blueprints.waf.view.template.Parameter;
+import java.io.Serializable;
+
+public class ErrorMapping extends Parameter implements Serializable {
 
     private String errorClassName;
     private String screen;
