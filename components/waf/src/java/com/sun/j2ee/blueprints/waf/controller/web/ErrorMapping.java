@@ -3,7 +3,7 @@ package com.sun.j2ee.blueprints.waf.controller.web;
 import com.sun.j2ee.blueprints.waf.view.template.Parameter;
 import java.io.Serializable;
 
-public class ErrorMapping extends Parameter implements Serializable {
+public class ErrorMapping implements Serializable {
 
     private String errorClassName;
     private String screen;

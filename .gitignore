@@ -2,3 +2,10 @@
 /.settings/
 .project
 .classpath
+
+
+/ivy
+build/
+libs/
+/.idea/
+*.iml

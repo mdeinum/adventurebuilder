@@ -1,0 +1,9 @@
+<ivy-module version="2.0">
+  <info organisation="biz.deinum" module="opc-ejb"/>
+  <dependencies>
+    <dependency org="javax.jms" name="javax.jms-api" rev="2.0.1"/>
+    <dependency org="javax.ejb" name="javax.ejb-api" rev="3.2.2"/>
+    <dependency org="javax.transaction" name="javax.transaction-api" rev="1.3"/>
+    <dependency org="javax.mail" name="javax.mail-api" rev="1.6.1"/>
+  </dependencies>
+</ivy-module>

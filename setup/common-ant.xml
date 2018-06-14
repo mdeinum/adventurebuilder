@@ -1,4 +1,4 @@
-<!-- Copyright 2004 Sun Microsystems, Inc.  All rights reserved.  You may not modify, use, reproduce, or distribute this software except in compliance with the terms of the License at: 
+<!-- Copyright 2004 Sun Microsystems, Inc.  All rights reserved.  You may not modify, use, reproduce, or distribute this software except in compliance with the terms of the License at:
  http://adventurebuilder.dev.java.net/LICENSE.txt
  $Id: common-ant.xml,v 1.6 2006/07/12 19:08:44 inder Exp $ -->
 <!-- common.xml: Referenced by various build.xml files, this file
@@ -24,14 +24,14 @@
 
   &appServerAntCommands; <!-- include app-server specific ant commands  -->
 
-  <available file="${j2ee.home}/javadb" type="dir" property="javadb.present"/>
-  <available file="${j2ee.home}/derby" type="dir" property="derby.present"/>
-  <condition property="db.root" value="${j2ee.home}/derby">
+  <available file="${j2ee.home}/../javadb" type="dir" property="javadb.present"/>
+  <available file="${j2ee.home}/../derby" type="dir" property="derby.present"/>
+  <condition property="db.root" value="${j2ee.home}/../derby">
     <isset property="derby.present"/>
-  </condition>  
-  <condition property="db.root" value="${j2ee.home}/javadb">
+  </condition>
+  <condition property="db.root" value="${j2ee.home}/../javadb">
     <isset property="javadb.present"/>
-  </condition>  
+  </condition>
 
   <path id="compile.classpath">
     <pathelement location="${classes.dir}"/>
@@ -47,7 +47,7 @@
     <delete dir="${build.dir}" />
   </target>
 
-  <!-- properties used by this target: 
+  <!-- properties used by this target:
   REQUIRED PROPERTIES
     banner.title if not present then this target is not executed
   -->
@@ -113,4 +113,3 @@
       </sourcepath>
     </javadoc>
   </target>
-

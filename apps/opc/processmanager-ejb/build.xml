@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 
-<!-- Copyright 2004 Sun Microsystems, Inc.  All rights reserved.  You may not modify, use, reproduce, or distribute this software except in compliance with the terms of the License at: 
+<!-- Copyright 2004 Sun Microsystems, Inc.  All rights reserved.  You may not modify, use, reproduce, or distribute this software except in compliance with the terms of the License at:
  http://adventurebuilder.dev.java.net/LICENSE.txt
  $Id: build.xml,v 1.9 2005/11/14 23:21:05 smitha Exp $ -->
 
@@ -12,7 +12,9 @@
 <project name="processmanager" default="core" basedir=".">
 
   <!-- path to root -->
-  <property name="root.dir" value="../../.."/> 
+  <property name="root.dir" value="../../.."/>
+
+  <import file="../../../setup/ivy-build.xml" />
 
   <property name="processmanager.home" value="."/>
 
@@ -31,7 +33,7 @@
   <property name="processmanager.servicelocator.jar" value="${processmanager.servicelocator.home}/build/servicelocator.jar"/>
 
   <path id="processmanager.classpath">
-    <path refid="compile.classpath" />
+    <path refid="libs.path.id" />
     <pathelement path="${processmanager.servicelocator.jar}"/>
   </path>
 
@@ -48,7 +50,7 @@
     <pathelement path="${processmanager.src}/java"/>
   </path>
 
-  <target name="compile">
+  <target name="compile" depends="resolve">
     <mkdir dir="${classes.dir}"/>
     <javac srcdir="${processmanager.src}/java"
            debug="${javac.debug}"
@@ -67,7 +69,7 @@
     <copy file="${processmanager.src}/conf/opc_processmanager-ejb.dbschema" tofile="${processmanager.buildjardir}/opc_processmanager-ejb.dbschema"/>
     <copy file="${processmanager.src}/conf/ejb-jar.xml" tofile="${processmanager.buildjardir}/META-INF/ejb-jar.xml"/>
     <copy file="${processmanager.src}/conf/sun-ejb-jar.xml" tofile="${processmanager.buildjardir}/META-INF/sun-ejb-jar.xml"/>
-    <copy file="${processmanager.src}/conf/sun-cmp-mappings.xml" tofile="${processmanager.buildjardir}/META-INF/sun-cmp-mappings.xml"/> 
+    <copy file="${processmanager.src}/conf/sun-cmp-mappings.xml" tofile="${processmanager.buildjardir}/META-INF/sun-cmp-mappings.xml"/>
     <delete file="${processmanager.ejbjar}" quiet="true"/>
     <jar jarfile="${processmanager.ejbjar}" basedir="${processmanager.buildjardir}">
       <manifest>
@@ -96,4 +98,3 @@
   <target name="all" depends="core, javadocs" />
 
 </project>
-

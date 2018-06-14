@@ -1,0 +1,9 @@
+<ivy-module version="2.0">
+  <info organisation="biz.deinum" module="waf"/>
+  <dependencies>
+    <!-- <dependency org="javax.jms" name="javax.jms-api" rev="2.0.1"/> -->
+    <dependency org="javax.ejb" name="javax.ejb-api" rev="3.2.2"/>
+    <dependency org="javax.servlet" name="javax.servlet-api" rev="4.0.1"/>
+    <dependency org="javax.servlet.jsp" name="javax.servlet.jsp-api" rev="2.3.1"/>
+  </dependencies>
+</ivy-module>

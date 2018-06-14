@@ -16,7 +16,6 @@ import javax.ejb.CreateException;
 import javax.ejb.RemoveException;
 import javax.ejb.DuplicateKeyException;
 
-import com.sun.j2ee.blueprints.opc.utils.InfraException;
 import com.sun.j2ee.blueprints.processmanager.manager.ejb.ManagerLocal;
 import com.sun.j2ee.blueprints.processmanager.manager.ejb.ManagerLocalHome;
 
@@ -131,7 +130,7 @@ public class ProcessManagerBean  implements SessionBean {
             ServiceLocator sl = new ServiceLocator();
             mlh = (ManagerLocalHome) sl.getLocalHome(MANAGER_HOME_ENV_NAME);
         } catch (ServiceLocatorException se) {
-            throw new InfraException("Got service locator exception! " + se.getMessage(), se);
+            throw new IllegalStateException("Got service locator exception! " + se.getMessage(), se);
         }
     }
     

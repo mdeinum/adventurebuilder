@@ -22,14 +22,14 @@ import com.sun.j2ee.blueprints.signon.web.SignOnFilter;
 import com.sun.j2ee.blueprints.waf.controller.Event;
 import com.sun.j2ee.blueprints.waf.controller.web.html.HTMLAction;
 import com.sun.j2ee.blueprints.waf.controller.web.html.HTMLActionException;
+import com.sun.j2ee.blueprints.waf.controller.web.html.HTMLActionSupport;
 
 /**
  * Handles responsibilities related to getting HTTP request
  * info and making the calls to the catalog made up component
  * to access the database.
  */
-public final class TO_BE_RENAMED implements HTMLAction {
-//public final class CatalogHTMLAction implements HTMLAction {
+public final class CatalogHTMLAction extends HTMLActionSupport {
 
     public static final String ACCOUNT_READ_ACTION = "readAccount";
     public static final String ACCOUNT_CREATE_ACTION = "createAccount";

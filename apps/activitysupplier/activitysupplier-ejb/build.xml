@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!-- Copyright 2004 Sun Microsystems, Inc.  All rights reserved.  You may not modify, use, reproduce, or distribute this software except in compliance with the terms of the License at: 
+<!-- Copyright 2004 Sun Microsystems, Inc.  All rights reserved.  You may not modify, use, reproduce, or distribute this software except in compliance with the terms of the License at:
  http://adventurebuilder.dev.java.net/LICENSE.txt
  $Id: build.xml,v 1.11 2004/10/14 03:26:36 yutayoshida Exp $ -->
 
@@ -11,7 +11,9 @@
 <project name="ActivityEJB" default="core" basedir=".">
 
   <!-- path to root -->
-  <property name="root.dir" value="../../.."/> 
+  <property name="root.dir" value="../../.."/>
+
+  <import file="../../../setup/ivy-build.xml" />
 
   <property name="ActivityEJB.home" value="."/>
 
@@ -38,7 +40,7 @@
   <property name="ActivityEJB.broker.wsdl" value="${ActivityEJB.opc.home}/build/classes/WebServiceBroker.wsdl"/>
 
   <path id="ActivityEJB.classpath">
-    <path refid="compile.classpath" />
+    <path refid="libs.path.id" />
     <pathelement path="${ActivityEJB.servloc.jar}"/>
   </path>
 
@@ -60,7 +62,7 @@
     </exec>
   </target>
 
-  <target name="activity-provider" depends="tools">
+  <target name="activity-provider" depends="resolve,tools">
     <mkdir dir="${classes.dir}"/>
     <javac srcdir="${ActivityEJB.src}"
            debug="${javac.debug}"
@@ -71,7 +73,7 @@
     </javac>
   </target>
 
-  <target name="compile-core" depends="tools">
+  <target name="compile-core" depends="resolve,tools">
 
     <mkdir dir="${classes.dir}"/>
     <copy file="${ActivityEJB.broker.wsdl}" todir="${build.dir}" />

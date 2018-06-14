@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!-- Copyright 2004 Sun Microsystems, Inc.  All rights reserved.  You may not modify, use, reproduce, or distribute this software except in compliance with the terms of the License at: 
+<!-- Copyright 2004 Sun Microsystems, Inc.  All rights reserved.  You may not modify, use, reproduce, or distribute this software except in compliance with the terms of the License at:
  http://adventurebuilder.dev.java.net/LICENSE.txt
  $Id: build.xml,v 1.22 2006/11/09 22:03:18 smitha Exp $ -->
 
@@ -11,8 +11,8 @@
 <project name="adventure" default="core" basedir=".">
 
     <!-- path to root -->
-    <property name="root.dir" value="../.."/> 
-
+    <property name="root.dir" value="../.."/>
+    <import file="../../setup/ivy-build.xml" />
     <property name="adventure.home" value="."/>
     <property name="build.dir" value="${adventure.home}/build"/>
     &commonAntCommands; <!-- include common ant commands -->
@@ -43,7 +43,7 @@
 
     <!-- The PurchaseOrder Component -->
     <property name="adventure.po.home" value="${OPCapp.components.basedir}/purchaseorder"/>
- 
+
     <!-- Service Locator Component -->
     <property name="adventure.servicelocator.home" value="${adventure.components.basedir}/servicelocator"/>
     <property name="adventure.servicelocator.jar" value="${adventure.servicelocator.home}/build/servicelocator.jar"/>
@@ -71,14 +71,14 @@
    <path id="adventure.classpath">
      <pathelement location="${adventure.jaxrpc.client.classbindir}"/>
      <pathelement location="${adventure.classbindir}"/>
-     <path refid="compile.classpath" />
+     <path refid="libs.path.id" />
      <path refid="adventure.components.classpath" />
    </path>
 
   <target name="compile" depends="jaxrpc-po-client,jaxrpc-ot-client,compile-only">
   </target>
 
-  <target name="compile-only">
+  <target name="compile-only" depends="resolve">
     <mkdir dir="${adventure.classbindir}"/>
     <javac srcdir="${adventure.src}/java"
            destdir="${adventure.classbindir}"
@@ -125,7 +125,7 @@
   </target>
 
   <target name="war">
-     
+
     <mkdir dir="${adventure.temp.war.build}"/>
     <!-- copy the docroot -->
     <copy todir="${adventure.temp.war.build}">
@@ -190,10 +190,8 @@
     <jar jarfile="${app.module}" basedir="${adventure.temp.jar.build}" />
     <delete dir="${adventure.temp.jar.build}"/>
   </target>
-  
+
   <target name="core" depends="banner,compile,war,ear" />
   <target name="all" depends="components, core" />
 
 </project>
-
-
